@@ -31,7 +31,7 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
                   {/* <img className={styles.image()} src={imageDataUrl} /> */}
                   <img
                     className={styles.image()}
-                    loading="lazy"
+                    loading="eager"
                     src={
                       thumbnailFile
                         ? thumbnailFile.filename
