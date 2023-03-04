@@ -1,7 +1,8 @@
 import { useFormik } from 'formik';
 // import _ from 'lodash';
+import KenAll from 'ken-all';
 import type { ChangeEventHandler, FC } from 'react';
-import zipcodeJa from 'zipcode-ja';
+// import zipcodeJa from 'zipcode-ja';
 
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 import { TextInput } from '../../foundation/TextInput';
@@ -30,12 +31,16 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
     onSubmit,
   });
 
-  const handleZipcodeChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+  const handleZipcodeChange: ChangeEventHandler<HTMLInputElement> = async (event) => {
     formik.handleChange(event);
 
     const zipCode = event.target.value;
+    console.log({ zipCode });
     // const address = [...(_.cloneDeep(zipcodeJa)[zipCode]?.address ?? [])];
-    const address = [...(zipcodeJa[zipCode]?.address ?? [])];
+    // const address = [...(zipcodeJa[zipCode]?.address ?? [])];
+    // const prefecture = address.shift();
+    const res = await KenAll(zipCode);
+    const address = res.shift() ?? [];
     const prefecture = address.shift();
     const city = address.join(' ');
 
