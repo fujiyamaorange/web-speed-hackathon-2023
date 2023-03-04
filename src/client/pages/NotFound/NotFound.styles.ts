@@ -23,4 +23,5 @@ export const subParagraph = () => css`
   color: #222222;
   font-family: 'Noto Serif JP', sans-serif;
   font-size: 0.875rem;
+  font-weight: 400;
 `;
