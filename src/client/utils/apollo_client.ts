@@ -36,13 +36,13 @@ export const apolloClient = new ApolloClient({
   connectToDevTools: true,
   defaultOptions: {
     mutate: {
-      fetchPolicy: 'network-only',
+      fetchPolicy: "network-only",
     },
     query: {
-      fetchPolicy: 'network-only',
+      fetchPolicy: 'cache-first',
     },
     watchQuery: {
-      fetchPolicy: 'network-only',
+      fetchPolicy: "cache-first",
     },
   },
   link,
